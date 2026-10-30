@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import { BlankPage } from '@/features/blank/BlankPage';
 import { getFeatureById } from '@/features/registry';
+import { DailyBoard } from '@/features/tasks/DailyBoard';
 
 const feature = getFeatureById('daily-tasks');
 
@@ -9,5 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function DailyTasksPage() {
-  return <BlankPage title={feature?.title ?? 'Daily Task Management'} />;
+  return <DailyBoard />;
 }
