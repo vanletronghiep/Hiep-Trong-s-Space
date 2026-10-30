@@ -46,10 +46,11 @@ describe('Craft, responsive, and architectural guardrails (Epic 8 §15 & ui_read
     expect(violations).toEqual([]);
   });
 
-  it('restricts localStorage to preferences.ts, process.env to config.ts, and router/link wrappers to transitions/', async () => {
+  it('restricts localStorage to preferences.ts, process.env to config.ts (and instrumentation.ts for NEXT_RUNTIME), and router/link wrappers to transitions/', async () => {
     const srcRoot = path.resolve(process.cwd(), 'src');
     const preferencesFile = path.resolve(srcRoot, 'client', 'preferences.ts');
     const configFile = path.resolve(srcRoot, 'server', 'config.ts');
+    const instrumentationFile = path.resolve(srcRoot, 'instrumentation.ts');
     const transitionsDir = path.resolve(srcRoot, 'features', 'transitions');
     const files = await collectFiles(srcRoot, /\.(ts|tsx)$/);
 
@@ -63,7 +64,7 @@ describe('Craft, responsive, and architectural guardrails (Epic 8 §15 & ui_read
       if (resolved !== preferencesFile && /\blocalStorage\b/.test(content)) {
         violations.push(`${rel}: localStorage accessed outside src/client/preferences.ts`);
       }
-      if (resolved !== configFile && /\bprocess\.env\b/.test(content)) {
+      if (resolved !== configFile && resolved !== instrumentationFile && /\bprocess\.env\b/.test(content)) {
         violations.push(`${rel}: process.env accessed outside src/server/config.ts`);
       }
       if (!resolved.startsWith(transitionsDir)) {
