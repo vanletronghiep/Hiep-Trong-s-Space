@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Next.js build output
+.next/
+out/
+build/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Local database, media, and backups
+data/
+backups/
+
+# TypeScript & test artifacts
+*.tsbuildinfo
+next-env.d.ts
+coverage/
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+
