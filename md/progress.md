@@ -1,21 +1,22 @@
 # Progress
 ## Current
-Epic: 4 Notification Center | Branch: epic/4-notifications | Status: done
+Epic: 5 Homepage | Branch: epic/5-homepage | Status: done
 ## Done
 - [x] Epic 0 — Foundation and storage layer (2026-10-30)
 - [x] Epic 1 — Design tokens, app shell, route stubs (2026-10-30)
 - [x] Epic 2 — Daily Task Management (2026-10-30)
 - [x] Epic 3 — Tasks Hub and sync (2026-10-30)
 - [x] Epic 4 — Notification Center (2026-10-30)
+- [x] Epic 5 — Homepage (2026-10-30)
 ## Decisions made during build
 - Placed test files under `tests/` mirroring `src/` and enforced closed-palette compliance (`tokens-guardrail.test.ts`) plus zero component duplication (`hub-list.test.tsx` verifies strictly one `TaskCard.tsx` and one `TaskForm.tsx`).
-- Auto-reveals the Completed group in Tasks Hub when `?task=<id>` targets a completed task so clicking a `"Completed"` notification always scrolls to and highlights the card.
-- Used a sibling stretched `TransitionLink` (`after:absolute after:inset-0`) beside the `Checkbox` in `NotificationItem` so clicking the card body navigates via `TransitionLink` and marks read while clicking the checkbox toggles read without nesting interactive `<button>` inside `<a>`.
+- Built `StarfieldEngine` as a framework-free 2D Canvas 3D-perspective engine with preallocated typed arrays, seeded PRNG for static reduced-motion frames, CSS-token colour lookup at init (zero raw hex/rgb), `visibilitychange` pause, and automatic quality step-down.
+- Homepage Quality Gate (`ui_readme.md` §16.1): 1. Yes, 2. Yes, 3. Yes, 4. Yes, 5. Yes, 6. Yes, 7. Yes, 8. Yes, 9. Yes, 10. Yes.
 ## Manual test script for current epic
-1. Open `/tasks/daily` or `/tasks/hub` — create a task due in 2 minutes and verify `Due soon` appears in the notification bell popover at 1m30s and `Overdue` appears at 2m00s without duplicates.
-2. Tick the read checkbox on a notification — verify its unread coral dot disappears and unread count decrements without navigating away; click **Mark all as read** to clear remaining unread items.
-3. Click a task notification body — verify the popover closes, marks the notification read, and opens `/tasks/hub?task=<id>` with the matching task scrolled into view, expanded, and glowing for 2 seconds.
-4. Click outside or press `Esc` while the notification popover is open — verify it closes cleanly and returns focus to the bell.
+1. Open `/` — verify the dark cosmos gradient, subtle radial lights, and smooth 3D-perspective starfield drift continuously without overflow at 320px, 768px, and 1440px.
+2. Inspect the `Wordmark` — verify italic `"Hiep Trong"` overlaps the top-left of uppercase `"SPACE"`, optically centred beneath one lavender four-point star, followed by the statement and tagline.
+3. Hover and Tab-focus **Let's go** in the top-right beside the cosmos bell — verify the label slides/fades right while the arrow glides in without shifting button width, and clicking smooth-scrolls to `#features` without changing the URL hash.
+4. Enable OS `prefers-reduced-motion` — verify the starfield renders one seeded static frame without starting the RAF loop and `"Let's go"` jumps cleanly without smooth-scroll animation.
 ## Known issues
 - Pre-existing user modifications on `md/agent_readme.md`, `md/human_readme.md`, `md/ui_readme.md`, `sources.txt`, and untracked `md/human_instructions.md` remain unstaged and untouched per §2.10.
 ## Ideas (not doing now)
