@@ -1,20 +1,19 @@
 # Progress
 ## Current
-Epic: 2 Daily Task Management | Branch: epic/2-daily-tasks | Status: done
+Epic: 3 Tasks Hub and sync | Branch: epic/3-tasks-hub | Status: done
 ## Done
 - [x] Epic 0 — Foundation and storage layer (2026-10-30)
 - [x] Epic 1 — Design tokens, app shell, route stubs (2026-10-30)
 - [x] Epic 2 — Daily Task Management (2026-10-30)
+- [x] Epic 3 — Tasks Hub and sync (2026-10-30)
 ## Decisions made during build
-- Placed test files under `tests/` mirroring `src/` and enforced closed-palette compliance via `tests/design/tokens-guardrail.test.ts`.
-- Built `TaskCard`, `TaskForm`, `TaskMenu`, `TransferDialog`, and `ScheduleDateDialog` once in `src/features/tasks/` with context-aware props (`daily` | `overdue` | `hub`) so Epic 3 reuses the exact same components without duplication.
-- Re-evaluated `deriveTaskState(task, now)` live on the client via a single shared `useMinuteTicker()` timer per page so tasks transition into Due soon or Overdue automatically without per-card intervals.
+- Placed test files under `tests/` mirroring `src/` and enforced closed-palette compliance (`tokens-guardrail.test.ts`) plus zero component duplication (`hub-list.test.tsx` verifies strictly one `TaskCard.tsx` and one `TaskForm.tsx`).
+- Auto-reveals the Completed group in Tasks Hub when `?task=<id>` targets a completed task so clicking a `"Completed"` notification always scrolls to and highlights the card.
 ## Manual test script for current epic
-1. Open `/tasks/daily` — verify Day view shows Yesterday (no Add button), Today (emphasised + Add button), and Tomorrow (Add button), plus Overdue below.
-2. Add tasks in Today and Tomorrow (`DD/MM` + `HH:mm`, Urgent/Normal/Optional, Pinned); edit a task's deadline into the past to verify Yesterday/Overdue coral appearance.
-3. Tick a task's checkbox — verify animated strike + italic, smooth glide to the bottom of the column, and `"N done"` counter increment.
-4. Click **Transfer** on an overdue task — move it to Today or Tomorrow with a future time and confirm it leaves Overdue and lands in the target column.
-5. Delete a task via the three-dot menu or Overdue card — confirm the dialog prompt and removal; switch Day / Week / Month and reload the page to verify persistence.
+1. Open `/tasks/hub` — create an unscheduled task via **Add task** and confirm it appears under Overdue / Due soon / Later without appearing in any Daily column.
+2. Click the task card body to expand — click **Add to today** (or **Add to tomorrow** / **Pick date…**), confirm the `"Scheduled DD/MM"` chip appears, and verify the task appears in `/tasks/daily`.
+3. Complete or delete a task in `/tasks/hub` and confirm `/tasks/daily` reflects the change immediately via shared query cache invalidation; toggle **Show completed** to inspect finished tasks.
+4. Visit `/tasks/hub?task=<id>` and confirm the matching card scrolls into view, expands, and plays the 2-second highlight glow.
 ## Known issues
 - Pre-existing user modifications on `md/agent_readme.md`, `md/human_readme.md`, `md/ui_readme.md`, `sources.txt`, and untracked `md/human_instructions.md` remain unstaged and untouched per §2.10.
 ## Ideas (not doing now)

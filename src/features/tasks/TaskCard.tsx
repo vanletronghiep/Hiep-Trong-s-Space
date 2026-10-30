@@ -69,7 +69,7 @@ export function TaskCard({
 
   useEffect(() => {
     if ((isNew || isHighlighted) && cardRef.current) {
-      cardRef.current.scrollIntoView({
+      cardRef.current.scrollIntoView?.({
         behavior: reducedMotion ? 'auto' : 'smooth',
         block: 'nearest',
       });
