@@ -71,7 +71,7 @@ Once the server is running at **http://localhost:3000**:
 | **Tasks Hub** | `http://localhost:3000/tasks/hub` | Master backlog grouped by **Overdue / Due soon / Later**, search, priority filters, sort toggle, and one-click **"Move to today"** / **"Schedule for date…"**. |
 | **Notification Center** | Bell icon (top-right of any `/tasks/*` or feature page) | Live unread badge, due-soon / overdue / reminder notifications, click to deep-link and highlight the task (`?task=<id>`), Mark all read, or Clear all. |
 | **Universe Menu** | Click top-left **✦** icon or press **`Ctrl + K`** (`Cmd + K` on Mac) | Quick-jump drawer to any of the 13 features from anywhere in the app. |
-| **Future Feature Pages (11)** | `/study/german`, `/finance`, `/health/fitness`, etc. | Styled cosmic placeholder pages with direct return links to Home and Daily Tasks. |
+| **Future Feature Pages (11)** | `/events`, `/ai-engineering`, `/blogs`, `/apcs`, `/flashcards`, `/entertainment`, `/tracking`, `/projects`, `/milestones`, `/learning-room`, `/achievements` | Styled cosmic placeholder pages with direct return links to Home and Daily Tasks. |
 
 ---
 
