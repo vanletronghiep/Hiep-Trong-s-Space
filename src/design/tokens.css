@@ -1,0 +1,138 @@
+:root {
+  /* ─── Cosmos theme (homepage, Feature Collection, Cosmic Launch) ─── */
+  --cosmos-bg-0: #05080d;
+  --cosmos-bg-1: #071321;
+  --cosmos-bg-2: #09182a;
+  --cosmos-navy-0: #090d20;
+  --cosmos-navy-1: #10152b;
+  --cosmos-text: #f4efff;
+  --cosmos-text-muted: #a5a5b8;
+  --cosmos-lavender: #a78bfa;
+  --cosmos-star-white: #ffffff;
+  --cosmos-star-blue: #a9cfff;
+  --cosmos-star-pale: #cfe3ff;
+  --cosmos-engine-glow: #a9cfff;
+  --cosmos-exhaust: #a99aef;
+
+  /* ─── Workspace theme (all working pages, popover, drawers, dialogs) ─── */
+  --ws-bg: #f0eff8;
+  --ws-surface: #ffffff;
+  --ws-text: #29263b;
+  --ws-text-muted: #777387;
+  --ws-accent: #a99aef;
+  --ws-accent-soft: #dcd5f1;
+  --ws-border: #e9e5f2;
+
+  /* ─── Status (shared) ─── */
+  --status-overdue: #d77f85;
+  --status-completed: #9a8bcb;
+  --status-due-soon: #d7a45d;
+  --status-notif-completed: #8fb8a0;
+  --status-system: #a5a5b8;
+
+  /* ─── Derived (computed via color-mix, not new colours) ─── */
+  --ws-focus: color-mix(in srgb, var(--ws-accent) 55%, var(--ws-text));
+  --cosmos-focus: var(--cosmos-lavender);
+  --ws-scrim: color-mix(in srgb, var(--ws-text) 28%, transparent);
+  --tint-overdue-bg: color-mix(in srgb, var(--status-overdue) 8%, var(--ws-surface));
+  --tint-overdue-border: color-mix(in srgb, var(--status-overdue) 45%, var(--ws-border));
+  --text-overdue: color-mix(in srgb, var(--status-overdue) 55%, var(--ws-text));
+  --text-due-soon: color-mix(in srgb, var(--status-due-soon) 48%, var(--ws-text));
+  --text-completed: color-mix(in srgb, var(--ws-text-muted) 80%, var(--ws-surface));
+  --text-notif-completed: color-mix(in srgb, var(--status-notif-completed) 42%, var(--ws-text));
+  --text-system: color-mix(in srgb, var(--status-system) 35%, var(--ws-text));
+  --text-accent: color-mix(in srgb, var(--ws-accent) 42%, var(--ws-text));
+  --fill-checkbox-checked: color-mix(in srgb, var(--status-completed) 80%, var(--ws-text));
+
+  /* ─── Typography ─── */
+  --font-display: var(--font-cormorant, 'Cormorant Garamond'), ui-serif, Georgia, serif;
+  --font-ui: var(--font-inter, 'Inter'), system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --fs-wordmark-space: clamp(3.25rem, 14vw, 11rem);
+  --fs-wordmark-signature: clamp(1.5rem, 3.4vw, 2.75rem);
+  --fs-display: clamp(2.25rem, 4vw, 3.25rem);
+  --fs-h1: clamp(1.75rem, 2.6vw, 2.25rem);
+  --fs-h2: clamp(1.25rem, 1.8vw, 1.5rem);
+  --fs-card-title: clamp(1.5rem, 2.4vw, 2.125rem);
+  --fs-body: 1rem;
+  --fs-ui: 0.875rem;
+  --fs-small: 0.8125rem;
+  --fs-micro: 0.75rem;
+
+  --lh-tight: 1.05;
+  --lh-heading: 1.15;
+  --lh-body: 1.6;
+  --lh-relaxed: 1.7;
+  --ls-wordmark: 0.22em;
+  --ls-wordmark-mobile: 0.12em;
+  --ls-support: 0.02em;
+
+  /* ─── Spacing (4-px base) ─── */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --space-10: 8rem;
+  --gutter: 1.25rem;
+  --gutter-lg: 2.5rem;
+  --max-content: 80rem;
+  --max-narrow: 36rem;
+
+  /* ─── Radii ─── */
+  --radius-pill: 999px;
+  --radius-card: 16px;
+  --radius-task: 14px;
+  --radius-item: 12px;
+  --radius-btn: 12px;
+  --radius-sm: 8px;
+
+  /* ─── Shadows (all derived from ink tokens) ─── */
+  --shadow-task:
+    0 1px 2px color-mix(in srgb, var(--ws-text) 4%, transparent),
+    0 4px 14px color-mix(in srgb, var(--ws-text) 4%, transparent);
+  --shadow-task-hover:
+    0 2px 4px color-mix(in srgb, var(--ws-text) 5%, transparent),
+    0 10px 28px color-mix(in srgb, var(--ws-text) 9%, transparent);
+  --shadow-popover:
+    0 2px 6px color-mix(in srgb, var(--cosmos-bg-0) 18%, transparent),
+    0 18px 48px color-mix(in srgb, var(--cosmos-bg-0) 32%, transparent);
+  --shadow-drawer: -8px 0 40px color-mix(in srgb, var(--ws-text) 14%, transparent);
+
+  /* ─── Layout / layers ─── */
+  --topbar-h: 56px;
+  --z-bg: 0;
+  --z-content: 10;
+  --z-nav: 30;
+  --z-popover: 40;
+  --z-drawer: 50;
+  --z-toast: 60;
+  --z-transition: 100;
+
+  /* ─── Motion ─── */
+  --dur-instant: 100ms;
+  --dur-fast: 150ms;
+  --dur-base: 250ms;
+  --dur-slow: 400ms;
+  --dur-reveal: 700ms;
+  --dur-hero: 900ms;
+  --motion-fast: 150ms;
+  --motion-base: 300ms;
+  --motion-reveal: 700ms;
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --motion-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-in: cubic-bezier(0.5, 0, 0.9, 0.4);
+  --blur-enter: 4px;
+  --y-enter: 12px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --blur-enter: 0px;
+    --y-enter: 0px;
+  }
+}

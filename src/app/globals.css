@@ -1,1 +1,131 @@
 @import 'tailwindcss';
+@import '../design/tokens.css';
+
+@theme inline {
+  --color-cosmos-bg-0: var(--cosmos-bg-0);
+  --color-cosmos-bg-1: var(--cosmos-bg-1);
+  --color-cosmos-bg-2: var(--cosmos-bg-2);
+  --color-cosmos-navy-0: var(--cosmos-navy-0);
+  --color-cosmos-navy-1: var(--cosmos-navy-1);
+  --color-cosmos-text: var(--cosmos-text);
+  --color-cosmos-text-muted: var(--cosmos-text-muted);
+  --color-cosmos-lavender: var(--cosmos-lavender);
+  --color-cosmos-star-white: var(--cosmos-star-white);
+  --color-cosmos-star-blue: var(--cosmos-star-blue);
+  --color-cosmos-star-pale: var(--cosmos-star-pale);
+  --color-cosmos-engine-glow: var(--cosmos-engine-glow);
+  --color-cosmos-exhaust: var(--cosmos-exhaust);
+
+  --color-ws-bg: var(--ws-bg);
+  --color-ws-surface: var(--ws-surface);
+  --color-ws-text: var(--ws-text);
+  --color-ws-text-muted: var(--ws-text-muted);
+  --color-ws-accent: var(--ws-accent);
+  --color-ws-accent-soft: var(--ws-accent-soft);
+  --color-ws-border: var(--ws-border);
+  --color-ws-focus: var(--ws-focus);
+  --color-ws-scrim: var(--ws-scrim);
+
+  --color-status-overdue: var(--status-overdue);
+  --color-status-completed: var(--status-completed);
+  --color-status-due-soon: var(--status-due-soon);
+  --color-status-notif-completed: var(--status-notif-completed);
+  --color-status-system: var(--status-system);
+
+  --color-tint-overdue-bg: var(--tint-overdue-bg);
+  --color-tint-overdue-border: var(--tint-overdue-border);
+  --color-text-overdue: var(--text-overdue);
+  --color-text-due-soon: var(--text-due-soon);
+  --color-text-completed: var(--text-completed);
+  --color-text-notif-completed: var(--text-notif-completed);
+  --color-text-system: var(--text-system);
+  --color-text-accent: var(--text-accent);
+  --color-fill-checkbox-checked: var(--fill-checkbox-checked);
+
+  --font-display: var(--font-display);
+  --font-sans: var(--font-ui);
+
+  --radius-pill: var(--radius-pill);
+  --radius-card: var(--radius-card);
+  --radius-task: var(--radius-task);
+  --radius-item: var(--radius-item);
+  --radius-btn: var(--radius-btn);
+  --radius-sm: var(--radius-sm);
+
+  --shadow-task: var(--shadow-task);
+  --shadow-task-hover: var(--shadow-task-hover);
+  --shadow-popover: var(--shadow-popover);
+  --shadow-drawer: var(--shadow-drawer);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-ui);
+  background-color: var(--ws-bg);
+  color: var(--ws-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
+
+/* Instant, accessible focus rings per ui_readme.md §4.3 & §8 */
+:focus-visible {
+  outline: 2px solid var(--ws-focus);
+  outline-offset: 2px;
+  transition: none !important;
+}
+
+[data-theme='cosmos'] :focus-visible,
+[data-theme='cosmos']:focus-visible {
+  outline: 2px solid var(--cosmos-focus);
+  outline-offset: 3px;
+  transition: none !important;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-ui {
+  font-family: var(--font-ui);
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes hts-task-new-glow {
+  0% {
+    box-shadow:
+      0 0 0 3px color-mix(in srgb, var(--ws-accent) 38%, transparent),
+      var(--shadow-task);
+  }
+  100% {
+    box-shadow:
+      0 0 0 0px color-mix(in srgb, var(--ws-accent) 0%, transparent),
+      var(--shadow-task);
+  }
+}
+
+.animate-task-new-glow {
+  animation: hts-task-new-glow 1.2s var(--ease) 1;
+}
+
+.animate-task-highlight-glow {
+  animation: hts-task-new-glow 2s var(--ease) 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-task-new-glow,
+  .animate-task-highlight-glow {
+    animation: none;
+  }
+}
