@@ -36,12 +36,12 @@
   --ws-scrim: color-mix(in srgb, var(--ws-text) 28%, transparent);
   --tint-overdue-bg: color-mix(in srgb, var(--status-overdue) 8%, var(--ws-surface));
   --tint-overdue-border: color-mix(in srgb, var(--status-overdue) 45%, var(--ws-border));
-  --text-overdue: color-mix(in srgb, var(--status-overdue) 55%, var(--ws-text));
-  --text-due-soon: color-mix(in srgb, var(--status-due-soon) 48%, var(--ws-text));
-  --text-completed: color-mix(in srgb, var(--ws-text-muted) 80%, var(--ws-surface));
-  --text-notif-completed: color-mix(in srgb, var(--status-notif-completed) 42%, var(--ws-text));
-  --text-system: color-mix(in srgb, var(--status-system) 35%, var(--ws-text));
-  --text-accent: color-mix(in srgb, var(--ws-accent) 42%, var(--ws-text));
+  --text-overdue: color-mix(in srgb, var(--status-overdue) 45%, var(--ws-text));
+  --text-due-soon: color-mix(in srgb, var(--status-due-soon) 38%, var(--ws-text));
+  --text-completed: color-mix(in srgb, var(--status-completed) 55%, var(--ws-text));
+  --text-notif-completed: color-mix(in srgb, var(--status-notif-completed) 36%, var(--ws-text));
+  --text-system: color-mix(in srgb, var(--status-system) 32%, var(--ws-text));
+  --text-accent: color-mix(in srgb, var(--ws-accent) 36%, var(--ws-text));
   --fill-checkbox-checked: color-mix(in srgb, var(--status-completed) 80%, var(--ws-text));
 
   /* ─── Typography ─── */
