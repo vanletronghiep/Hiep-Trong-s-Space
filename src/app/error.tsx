@@ -1,6 +1,7 @@
 'use client';
 
 import { TransitionLink } from '@/features/transitions/TransitionLink';
+import { PageReady } from '@/features/transitions/TransitionProvider';
 import { Button } from '@/ui/Button';
 import { StarIcon } from '@/ui/StarIcon';
 
@@ -13,6 +14,7 @@ export default function GlobalErrorPage({
 }) {
   return (
     <main className="min-h-[100svh] bg-ws-bg text-ws-text flex flex-col items-center justify-center px-6 text-center">
+      <PageReady />
       <StarIcon size={14} className="text-status-overdue mb-4" />
       <h1 className="font-display text-[length:var(--fs-display)] leading-[var(--lh-heading)] font-normal">
         Something drifted off course
