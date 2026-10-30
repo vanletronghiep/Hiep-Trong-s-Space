@@ -22,7 +22,7 @@ export function LetsGoButton({ targetId = 'features', className }: LetsGoButtonP
       typeof window.matchMedia === 'function' &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    target.scrollIntoView({
+    target.scrollIntoView?.({
       behavior: reducedMotion ? 'auto' : 'smooth',
       block: 'start',
     });

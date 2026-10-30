@@ -1,8 +1,7 @@
+import { FeatureCollection } from '@/features/home/feature-collection/FeatureCollection';
 import { Hero } from '@/features/home/Hero';
 import { HomeFooter } from '@/features/home/HomeFooter';
 import { Starfield } from '@/features/home/starfield/Starfield';
-import { FEATURE_REGISTRY } from '@/features/registry';
-import { TransitionLink } from '@/features/transitions/TransitionLink';
 import { PageReady } from '@/features/transitions/TransitionProvider';
 
 export default function HomePage() {
@@ -38,45 +37,7 @@ export default function HomePage() {
       {/* Foreground content above starfield */}
       <main style={{ zIndex: 'var(--z-content)' }} className="relative flex flex-col">
         <Hero />
-
-        {/* Temporary #features section placeholder until Epic 6 upgrades it to HorizontalGallery & VerticalGrid */}
-        <section
-          id="features"
-          aria-labelledby="features-heading"
-          className="scroll-mt-8 px-[var(--gutter)] lg:px-[var(--gutter-lg)] py-20"
-        >
-          <div className="mx-auto max-w-[var(--max-content)] space-y-8">
-            <div className="space-y-2">
-              <h2
-                id="features-heading"
-                className="font-display text-[length:var(--fs-display)] font-light leading-[var(--lh-heading)] text-cosmos-text"
-              >
-                Explore the space
-              </h2>
-              <p className="text-[length:var(--fs-body)] text-cosmos-text-muted">
-                Thirteen places, each with its own purpose.
-              </p>
-            </div>
-
-            <nav aria-label="Spaces" className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {FEATURE_REGISTRY.map((feature) => (
-                <TransitionLink
-                  key={feature.id}
-                  href={feature.href}
-                  className="flex items-center justify-between rounded-card border border-[color-mix(in_srgb,var(--cosmos-text)_14%,transparent)] bg-[color-mix(in_srgb,var(--cosmos-bg-0)_45%,transparent)] px-5 py-4 text-cosmos-text hover:border-[color-mix(in_srgb,var(--cosmos-text)_35%,transparent)] hover:bg-[color-mix(in_srgb,var(--cosmos-text)_6%,transparent)] transition-colors duration-[var(--dur-fast)]"
-                >
-                  <span className="font-display text-[length:var(--fs-card-title)] font-light">
-                    {feature.title}
-                  </span>
-                  <span className="text-[length:var(--fs-micro)] text-cosmos-text-muted ml-4 shrink-0">
-                    {feature.label}
-                  </span>
-                </TransitionLink>
-              ))}
-            </nav>
-          </div>
-        </section>
-
+        <FeatureCollection />
         <HomeFooter />
       </main>
     </div>
