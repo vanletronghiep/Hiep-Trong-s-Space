@@ -27,6 +27,26 @@ export const notificationRecordSchema = z.object({
 });
 export type NotificationRecord = z.infer<typeof notificationRecordSchema>;
 
+export const notificationDtoSchema = z.object({
+  id: z.string().uuid(),
+  kind: notificationKindSchema,
+  tagLabel: z.string(),
+  title: z.string(),
+  message: z.string(),
+  isRead: z.boolean(),
+  createdAt: isoInstantSchema,
+  timeLeftMs: z.number().nullable(),
+  taskId: z.string().uuid().nullable(),
+  targetUrl: z.string().nullable(),
+});
+export type NotificationDto = z.infer<typeof notificationDtoSchema>;
+
+export const notificationListResponseSchema = z.object({
+  items: z.array(notificationDtoSchema),
+  unreadCount: z.number().int().nonnegative(),
+});
+export type NotificationListResponse = z.infer<typeof notificationListResponseSchema>;
+
 export const notificationQuerySchema = z.object({
   taskId: z.string().uuid().optional(),
   kinds: z.array(notificationKindSchema).optional(),

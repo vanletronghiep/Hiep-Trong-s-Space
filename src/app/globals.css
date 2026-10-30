@@ -90,6 +90,13 @@ body {
   transition: none !important;
 }
 
+[data-theme='cosmos'] [data-theme='workspace'] :focus-visible,
+[data-theme='cosmos'] [data-theme='workspace']:focus-visible {
+  outline: 2px solid var(--ws-focus);
+  outline-offset: 2px;
+  transition: none !important;
+}
+
 .font-display {
   font-family: var(--font-display);
 }

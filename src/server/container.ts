@@ -1,5 +1,6 @@
 import type { HealthResponse } from '@/contracts';
 import { systemClock, type Clock } from '@/domain/clock';
+import { NotificationService } from '@/services/notification-service';
 import { createStorageAdapter } from '@/services/storage/factory';
 import type { StorageAdapter } from '@/services/storage/storage-adapter';
 import { TaskService } from '@/services/task-service';
@@ -10,6 +11,7 @@ export interface AppContainer {
   clock: Clock;
   storage: StorageAdapter;
   taskService: TaskService;
+  notificationService: NotificationService;
   getHealth(): Promise<HealthResponse>;
 }
 
@@ -35,11 +37,18 @@ async function buildContainer(): Promise<AppContainer> {
     clock: systemClock,
   });
 
+  const notificationService = new NotificationService({
+    storage,
+    clock: systemClock,
+    timeZone: config.appTimezone,
+  });
+
   return {
     config,
     clock: systemClock,
     storage,
     taskService,
+    notificationService,
     async getHealth(): Promise<HealthResponse> {
       return {
         ok: true,

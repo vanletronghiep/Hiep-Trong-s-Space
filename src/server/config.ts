@@ -59,3 +59,7 @@ export function getAppConfig(): AppConfig {
   }
   return cachedConfig;
 }
+
+export function isNodeRuntime(): boolean {
+  return process.env.NEXT_RUNTIME === 'nodejs';
+}

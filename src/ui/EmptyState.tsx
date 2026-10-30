@@ -38,7 +38,15 @@ export function EmptyState({
         </span>
       </div>
       <div className="space-y-1 max-w-[var(--max-narrow)]">
-        <p className="text-[length:var(--fs-ui)] font-medium text-ws-text-muted">{title}</p>
+        <p
+          className={cn(
+            description
+              ? 'text-[0.9375rem] font-semibold text-ws-text'
+              : 'text-[length:var(--fs-ui)] font-medium text-ws-text-muted',
+          )}
+        >
+          {title}
+        </p>
         {description ? (
           <p className="text-[length:var(--fs-small)] text-ws-text-muted">{description}</p>
         ) : null}

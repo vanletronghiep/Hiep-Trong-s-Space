@@ -1,9 +1,9 @@
 'use client';
 
 import { useEffect, useState, type ReactNode } from 'react';
-import { Bell, Command } from 'lucide-react';
+import { Command } from 'lucide-react';
+import { BellButton } from '@/features/notifications/BellButton';
 import { TransitionLink } from '@/features/transitions/TransitionLink';
-import { IconButton } from './IconButton';
 import { StarIcon } from './StarIcon';
 import { UniverseMenu } from './UniverseMenu';
 import { cn } from './cn';
@@ -89,11 +89,7 @@ export function WorkspaceShell({ children, bellSlot }: WorkspaceShellProps) {
               </span>
             </button>
 
-            {bellSlot ?? (
-              <IconButton aria-label="Notifications" tone="workspace">
-                <Bell size={20} strokeWidth={1.5} />
-              </IconButton>
-            )}
+            {bellSlot ?? <BellButton tone="workspace" />}
           </div>
         </div>
       </header>
